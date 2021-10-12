@@ -1,0 +1,7 @@
+a {
+    color: rgb(15, 4, 4);
+    padding: 0.2rem 1rem;
+}
+a.active {
+    color:rgb(206, 7, 7);
+}
