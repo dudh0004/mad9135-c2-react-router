@@ -1,16 +1,48 @@
+
 .card{
-    width: 30rem;
-    height: 45rem;
+    max-width: 600px;
+    border: 5px solid #e7e7e7;
+    border-radius: 6px;
+    padding: 1rem;
+    height: 31rem;
 }
 
-.users-list {
+.users{
     display: grid;
     grid-auto-rows: auto;
-    grid-gap: .5rem;
-    grid-template-columns: repeat(4, 1fr); 
-    margin-left: 10rem;
+    grid-gap: 4.5rem;
+    grid-template-columns: repeat(1, 1fr); 
+    margin-top: 20px;
 }
 
 .detail {
+    font-size: 1rem;
+}
+
+.moreInfo {
     font-size: 1.5rem;
+    margin-left: -45px;
+    color: rgb(11, 23, 75);
+}
+
+.card-reveal .userDetail {
+    font-size: 1rem;
+} 
+
+@media only screen and (min-width: 600px){
+    .users
+    { 
+        grid-template-columns: repeat(2, 1fr); 
+
+    }
+   
+
+}
+
+@media only screen and (min-width: 900px){
+    .users
+    { 
+        grid-template-columns: repeat(3, 1fr); 
+    }
+    
 }
