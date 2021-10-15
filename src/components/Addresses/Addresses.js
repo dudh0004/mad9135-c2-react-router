@@ -8,6 +8,7 @@ import '../Addresses/addresses.css'
 
 export default function Users(props) {
     const [list, setList] = useState([]);
+    console.log(props)
 
     async function fetchData() {
         let url = 'https://randomuser.me/api/?seed=dudh0004&nat=au,ca,nz,gb,us&results=32';
@@ -21,8 +22,7 @@ export default function Users(props) {
         console.log('useEffect was called.');
         fetchData();
     }, []);
-// export default function Addresses(props) {
-    console.log(list)
+
     let sortedArray = list.sort((a,b) => {
         if(a.name.last > b.name.last) {
             return 1;
@@ -36,29 +36,25 @@ export default function Users(props) {
 
     return (
         <div className="addresses">
+        {sortedArray.length === 0 && <p>Loading...</p>}
             <table className="centered-responsive-table">
                 <thead>
-
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Address</th>
-                </tr>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Address</th>
+                    </tr>
                 </thead>
-                
-
                 {sortedArray.map((item, index) => (
-
                 <tbody>
-                <tr>
-                    <td>{item.name.first}</td>
-                    <td>{item.name.last}</td>
-                    <td>{item.location.street.number}  {item.location.street.name}, {item.location.city}, {item.location.state}, {item.location.postcode}</td>
-                </tr>
+                    <tr>
+                        <td>{item.name.first}</td>
+                        <td>{item.name.last}</td>
+                        <td>{item.location.street.number}  {item.location.street.name}, {item.location.city}, {item.location.state}, {item.location.postcode}</td>
+                    </tr>
                 </tbody>
                 ))}
                 </table>
-                
         </div>
     )
 
