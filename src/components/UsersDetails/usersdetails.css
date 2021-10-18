@@ -1,0 +1,17 @@
+.row {
+    width: 1200px;
+    margin-top: 30px;
+
+}
+
+.card-content .u serName {
+    font-size: 3rem;
+}
+
+.card-content .addressDetail {
+    font-size: 1.5rem;
+}
+
+.card-content .details {
+    font-size: 1.5rem;
+}

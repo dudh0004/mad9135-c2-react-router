@@ -1,11 +1,20 @@
-td{
-    padding: 2rem;
+.address {
+    width: 100%;
 }
 
-th {
-    color: rgb(10, 77, 122);
+.address td, .address th {
+    color: #0c455c;
+    padding: 8px;
 }
 
-td {
-    color: rgb(37, 144, 216);
+.address th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #0c455c;
+    color: white;
+}
+
+tr .firstName {
+    color: #039be5;
 }

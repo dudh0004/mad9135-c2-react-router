@@ -1,29 +1,13 @@
-import { useState, useEffect } from 'react';
-import { Route, NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
 import 'material-icons/iconfont/material-icons.css';
 import '../Users/users.css';
-import '../Addresses/addresses.css'
+import '../Addresses/addresses.css';
 
 export default function Users(props) {
-    const [list, setList] = useState([]);
-    console.log(props)
 
-    async function fetchData() {
-        let url = 'https://randomuser.me/api/?seed=dudh0004&nat=au,ca,nz,gb,us&results=32';
-        let resp = await fetch(url);
-        let data = await resp.json();
-        setList(data.results); 
-        console.log(data);
-    }
-
-    useEffect(() => {
-        console.log('useEffect was called.');
-        fetchData();
-    }, []);
-
-    let sortedArray = list.sort((a,b) => {
+    let sortedArray = props.result.sort((a,b) => {
         if(a.name.last > b.name.last) {
             return 1;
         }
@@ -37,22 +21,18 @@ export default function Users(props) {
     return (
         <div className="addresses">
         {sortedArray.length === 0 && <p>Loading...</p>}
-            <table className="centered-responsive-table">
-                <thead>
+            <table className="address">
                     <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Address</th>
                     </tr>
-                </thead>
                 {sortedArray.map((item, index) => (
-                <tbody>
                     <tr>
-                        <td>{item.name.first}</td>
+                        <NavLink to={{pathname: `/users/${index}`}}><td className="firstName"> {item.name.first}</td></NavLink>
                         <td>{item.name.last}</td>
                         <td>{item.location.street.number}  {item.location.street.name}, {item.location.city}, {item.location.state}, {item.location.postcode}</td>
                     </tr>
-                </tbody>
                 ))}
                 </table>
         </div>
