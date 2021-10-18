@@ -26,30 +26,24 @@ export default function Users(props) {
         <div className="users">
             {list.length === 0 && <p>Loading...</p>}
             {list.map((item, index) => (
+                
                 <div className="users-list" key={item.login.uuid}>
-                    <div className="card">
-                        <div className="card-image waves-effect waves-block waves-light">
-                            <img className="activator image" src={item.picture.large} alt="image1"/>
-                        </div>
-                        <div className="card-content">
-                            <span className="card-title grey-text text-darken-4">{item.name.first}    {item.name.last}</span>
-                            <p className="detail blue-text text-darken-4">{item.email}</p>
-                            <p className="detail grey-text text-darken-4">{item.cell}</p>
-                            <NavLink to={`/users/${index+1}`} className="activator moreInfo">More Info</NavLink>
-                        </div>
+                    <div className="main-card">
+                        <div className="card-photo"></div>
 
-                        <div className="card-reveal">
-                            <span className="card-title grey-text text-darken-4">{item.name.first}    {item.name.last}<i className="material-icons right">close</i></span>
-                            <img className="activator" src={item.picture.large} alt="image1"/>
-                            <span className="card-title userDetail grey-text text-darken-4">Address:</span>
-                            <span className="card-title userDetail grey-text text-darken-4">{item.location.street.number}  {item.location.street.name}, {item.location.city}, {item.location.state}, {item.location.postcode}</span>
-                            <p></p>
-                            <span className="card-title userDetail grey-text text-darken-4">uuid:  {item.login.uuid}</span>
-                            <span className="card-title userDetail grey-text text-darken-4">Username:  {item.login.username}</span>
-                            <span className="card-title userDetail grey-text text-darken-4">Password:  {item.login.password}</span>
+                        <div className="image">
+                            <img src={item.picture.medium} alt="image1" />
                         </div>
-                    </div>
-                </div>  
+                        <div className="userDetails">
+                            <h2 className="name">{item.name.first}    {item.name.last}</h2>
+                            <h3 className="email">{item.email}</h3>
+                            <h3 className="cell">{item.cell}</h3>
+                        </div>
+                        <div class="moreDetails">
+                            <NavLink to={{pathname: `/users/${index}`}}>More Details</NavLink>
+                        </div>
+                    </div> 
+                </div> 
             ))}
     </div>
     );
